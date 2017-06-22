@@ -10,8 +10,9 @@ RectF::RectF(float left_in, float right_in, float top_in, float bottom_in)
 }
 
 RectF::RectF(const Vec2& topLeft, const Vec2& botRight)
+	:
+	RectF(topLeft.x, botRight.x, topLeft.y, botRight.y)
 {
-	RectF(topLeft.x, topLeft.y, botRight.x, botRight.y);
 }
 
 RectF::RectF(const Vec2& topLeft, float width, float height)
