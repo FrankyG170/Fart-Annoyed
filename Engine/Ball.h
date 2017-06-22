@@ -6,10 +6,11 @@ class Ball
 {
 public:
 	Ball() = default;
-	Ball(float center_in, Vec2 width, Vec2 height);
+	Ball(const Vec2& pos_in, const Vec2& vel_in);
 	void Draw(Graphics& gfx) const;
-public:
-	float center;
-	Vec2 width;
-	Vec2 height;
+	void Update(float dt);
+private:
+	static constexpr float radius = 7.0f;
+	Vec2 pos;
+	Vec2 vel;
 };
