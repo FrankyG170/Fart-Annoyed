@@ -28,6 +28,14 @@ bool RectF::IsOverlappingWith(const RectF & other) const
 
 RectF RectF::FromCenter(const Vec2 & center, float halfWidth, float halfHeight)
 {
-	const Vec2 half(halfHeight, halfWidth);
+	const Vec2 half(halfWidth, halfHeight);
 	return RectF(center - half, center + half);
 }
+
+void RectF::GetExpanded(RectF & rect) const
+{
+}
+
+// GetExpanded()
+	// adding offset will expand the brick, subtracting the offset will shrink the brick
+	// must do to all sides of the rect
