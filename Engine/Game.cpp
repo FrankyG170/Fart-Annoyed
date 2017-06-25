@@ -61,10 +61,11 @@ void Game::UpdateModel()
 {
 	const float dt = ft.Mark();
 
-	ball.Update(dt);
 	paddle.Update(wnd.kbd, dt);
+	paddle.DoWallCollision(walls);
 
-	// Ball Collisions
+	ball.Update(dt);
+	
 	for (Bricks& b : bricks)
 	{
 		if (b.DoBallCollision(ball))
@@ -73,13 +74,11 @@ void Game::UpdateModel()
 			break;
 		}
 	}
+
 	if (paddle.DoBallCollision(ball))
 	{
 		soundPad.Play();
 	}
-
-	// Wall Collisions
-	paddle.DoWallCollision(walls);
 	if (ball.DoWallCollision(walls))
 	{
 		soundPad.Play();
