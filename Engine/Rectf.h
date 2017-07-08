@@ -11,7 +11,7 @@ public:
 	bool IsOverlappingWith (const RectF& other) const;
 	static RectF FromCenter(const Vec2& center, float halfWidth, float halfHeight);
 	// TODO: Funciton to expand and create padding for bricks
-	void GetExpanded(RectF& rect) const;
+	RectF GetExpanded(float offset) const;
 public:
 	float left;
 	float right;

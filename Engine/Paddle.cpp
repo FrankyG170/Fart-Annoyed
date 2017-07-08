@@ -1,16 +1,6 @@
 #include "Paddle.h"
 
 
-// TODO: Draw
-	// Get the rect
-	// Draw rect with wing color
-	// Shrink rect using wingwidth
-	// Then draw shrunk rect ontop of other rect
-
-
-// TODO: Update function
-	// if statements for keypresses controlling the paddle, make sure to use speed and time
-
 Paddle::Paddle(const Vec2& pos_in, float halfWidth_in, float halfHeight_in)
 	:
 	pos(pos_in),

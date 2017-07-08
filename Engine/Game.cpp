@@ -28,7 +28,7 @@ Game::Game(MainWindow& wnd)
 	ball(Vec2(300.0f, 400.0f), Vec2(300.0f, 300.0f)),
 	walls(0.0f,float(gfx.ScreenWidth), 0.0f, float(gfx.ScreenHeight)),
 	soundPad( L"Sounds\\arkpad.wav"),
-	// TODO: initialize brick sound
+	soundBrick( L"Sounds\\arkbrick.wav"),
 	paddle(Vec2(400.0f, 500.0f), 50.0f, 15.0f)
 {
 	const Color colors[4] = { Colors::Red, Colors::Blue, Colors::Green, Colors::Cyan };
@@ -70,7 +70,7 @@ void Game::UpdateModel()
 	{
 		if (b.DoBallCollision(ball))
 		{
-			soundPad.Play();
+			soundBrick.Play();
 			break;
 		}
 	}

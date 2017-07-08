@@ -57,8 +57,8 @@ private:
 	FrameTimer ft;
 	RectF walls;
 	Sound soundPad;
+	Sound soundBrick;
 	Bricks bricks[nBricks];
-	// TODO: add brick sound
 	Paddle paddle;
 	/********************************/
 };

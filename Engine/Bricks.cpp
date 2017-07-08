@@ -11,9 +11,8 @@ void Bricks::Draw(Graphics & gfx) const
 {
 	if (!destroyed) 
 	{
-		gfx.DrawRect(rect, color);
+		gfx.DrawRect(rect.GetExpanded(padding), color);
 	}
-	 // TODO: use GetExpanded to have padding for bricks
 }
 
 bool Bricks::DoBallCollision(Ball& ball)

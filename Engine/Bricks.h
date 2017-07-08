@@ -13,8 +13,7 @@ public:
 	bool DoBallCollision(Ball& ball);
 
 public:
-	// TODO: add member variable for padding on brick
-	static constexpr float padding = 0.7f;
+	static constexpr float padding = 1.0f;
 	RectF rect;
 	Color color;
 	bool destroyed = false;
