@@ -3,7 +3,8 @@
 Bricks::Bricks(const RectF & rect_in, const Color & color_in)
 	:
 	rect(rect_in),
-	color(color_in)
+	color(color_in),
+	destroyed(false)
 {
 }
 
@@ -11,21 +12,18 @@ void Bricks::Draw(Graphics & gfx) const
 {
 	if (!destroyed) 
 	{
-		gfx.DrawRect(rect.GetExpanded(padding), color);
+		gfx.DrawRect(rect.GetExpanded(-padding), color);
 	}
 }
 
-bool Bricks::checkBallCollision(const Ball & ball) const
+bool Bricks::CheckBallCollision(const Ball & ball) const
 {
-	if (rect.IsOverlappingWith(ball.GetRect()) && !destroyed)
-	{
-		return true;
-	}
+	return rect.IsOverlappingWith(ball.GetRect()) && !destroyed;
 }
 
 void Bricks::ExecuteBallCollision(Ball& ball)
 {
-	assert(checkBallCollision(ball));
+	assert(CheckBallCollision(ball));
 
 	const Vec2 ballPos = ball.GetPosition();
 	if (std::signbit(ball.GetVelocity().x) == std::signbit(Vec2(ballPos - GetCenter()).x))
