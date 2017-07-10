@@ -15,15 +15,35 @@ void Bricks::Draw(Graphics & gfx) const
 	}
 }
 
-bool Bricks::DoBallCollision(Ball& ball)
+bool Bricks::checkBallCollision(const Ball & ball) const
 {
 	if (rect.IsOverlappingWith(ball.GetRect()) && !destroyed)
 	{
-		ball.ReboundY();
-		destroyed = true;
 		return true;
 	}
-	return false;
 }
 
+void Bricks::ExecuteBallCollision(Ball& ball)
+{
+	assert(checkBallCollision(ball));
 
+	const Vec2 ballPos = ball.GetPosition();
+	if (std::signbit(ball.GetVelocity().x) == std::signbit(Vec2(ballPos - GetCenter()).x))
+	{
+		ball.ReboundY();
+	}
+	else if (ballPos.x >= rect.left && ballPos.x <= rect.right)
+	{
+		ball.ReboundY();
+	}
+	else 
+	{
+		ball.ReboundX();
+	}
+	destroyed = true;
+}
+
+Vec2 Bricks::GetCenter()
+{
+	return rect.GetCenter();
+}

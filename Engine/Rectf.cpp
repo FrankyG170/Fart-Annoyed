@@ -38,6 +38,7 @@ RectF RectF::GetExpanded(float offset) const
 	return RectF(left + offset, right - offset, top + offset, bottom - offset);
 }
 
-// GetExpanded()
-	// adding offset will expand the brick, subtracting the offset will shrink the brick
-	// must do to all sides of the rect
+Vec2 RectF::GetCenter()
+{
+	return Vec2((left + right) / 2.0f, (top + bottom) / 2.0f);
+}
